@@ -1,7 +1,5 @@
 # Continuing pre-training of the MLM model
 
-## Introduction to continuing pre-training
-
 In natural language processing (NLP), using an open source pre-trained model and continuing to pre-train it helps to
 improve the generalization ability and adaptability of the model, making the model perform better on specific tasks.
 
@@ -13,7 +11,22 @@ Continuing pre-training uses existing pre-trained models to continue learning th
 generally taken from data sets that are highly related to downstream tasks for training, rather than pursuing
 versatility.
 
-## Prepare
+## 1. Create a new Notebook Server
+
+Create a new Notebook Server on the Kubeflow on vSphere platform.
+
+- You can create your own custom image or use an image published by us here:
+
+  `projects.registry.vmware.com/models/notebook/inference:nlp-pytorch-gpu-v4`
+- set 8 CPUs, 6GB memory, 1 GPU for this Notebook Server.
+
+## 2. Connect to the Notebook Server
+
+Open a Terminal window. Pull the code of this project by running
+
+`git clone https://github.com/blueskyztt/MLM-pre-train.git`
+
+## 3. Prepare
 
 Install required dependencies
 
@@ -21,7 +34,7 @@ Install required dependencies
 pip install -r requirements.txt
 ```
 
-## Data
+## 4. Data
 
 `datasets` is a dataset management tool produced by huggingface, which can be installed with `pip`:
 
@@ -33,7 +46,7 @@ pip install datasets
 yelp-review, etc., no need to download in advance in this project, `run_mlm_no_trainer.py` already includes the download
 process.
 
-## Continuing pre-training
+## 5. Continuing pre-training
 
 The python script is
 from: https://github.com/huggingface/transformers/blob/main/examples/pytorch/language-modeling/run_mlm_no_trainer.py
@@ -46,7 +59,7 @@ bash run.sh
 
 Among them, [run.sh](run.sh) supports the continuing pre-training of `datasets` data (`train_huggingface_dataset`).
 
-## Model output
+## 6. Model output
 
 After training, the pre-trained model will be saved in the specified directory, such as `./pretrain.model`, which can be
 used for other NLP tasks.
