@@ -63,3 +63,5 @@ Among them, [run.sh](run.sh) supports the continuing pre-training of `datasets` 
 
 After training, the pre-trained model will be saved in the specified directory, such as `./pretrain.model`, which can be
 used for other NLP tasks.
+
+![avatar](./pic/pic01.png)
